@@ -4,7 +4,9 @@ import (
 	"net/http"
 	"sync"
 
+	"github.com/swxctx/wechat/account"
 	"github.com/swxctx/wechat/cache"
+	"github.com/swxctx/wechat/comment"
 	"github.com/swxctx/wechat/context"
 	"github.com/swxctx/wechat/js"
 	"github.com/swxctx/wechat/material"
@@ -12,6 +14,7 @@ import (
 	"github.com/swxctx/wechat/oauth"
 	"github.com/swxctx/wechat/pay"
 	"github.com/swxctx/wechat/server"
+	"github.com/swxctx/wechat/stat"
 	"github.com/swxctx/wechat/template"
 	"github.com/swxctx/wechat/user"
 )
@@ -98,4 +101,19 @@ func (wc *Wechat) GetTemplate() *template.Template {
 // GetPay 返回支付消息的实例
 func (wc *Wechat) GetPay() *pay.Pay {
 	return pay.NewPay(wc.Context)
+}
+
+// GetAccount 账号管理
+func (wc *Wechat) GetAccount() *account.Account {
+	return account.NewAccount(wc.Context)
+}
+
+// GetComment 留言、评论管理
+func (wc *Wechat) GetComment() *comment.Comment {
+	return comment.NewComment(wc.Context)
+}
+
+// GetStat 数据统计管理
+func (wc *Wechat) GetStat() *stat.Stat {
+	return stat.NewStat(wc.Context)
 }
